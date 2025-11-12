@@ -1,0 +1,61 @@
+.container {
+    flex: 1;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    min-width: 250px;
+  }
+  
+  h2 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #111827;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+  
+  li strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  li small {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+  }
+  
+  .urgencia {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  
+  .crítica {
+    background-color: #ef4444;
+  }
+  
+  .alta {
+    background-color: #facc15;
+    color: #111827;
+  }
+  
+  .baixa {
+    background-color: #22c55e;
+  }
+  
