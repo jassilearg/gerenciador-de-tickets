@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { processarPendentes } from '../api';
+import { processarPendentes } from '../../api';
 import './BotaoProcessar.module.css'
 
 export default function BotaoProcessar({ onProcessar }) {

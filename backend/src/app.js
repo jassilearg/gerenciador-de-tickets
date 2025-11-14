@@ -6,7 +6,10 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { Sequelize } from 'sequelize';
 import ticketsRouter from './routes/tickets.js';
+import usersRouter from './routes/users.js';
+import { authenticateToken } from './middleware/authMiddleware.js';
 import TicketModel from './models/Ticket.js';
+import UserModel from './models/User.js';
 
 const app = express();
 app.use(cors());
@@ -22,11 +25,15 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
 });
 
 const Ticket = TicketModel(sequelize);
-app.set('sequelize', sequelize);
-app.set('models', { Ticket });
+const User = UserModel(sequelize);
 
-app.use('/tickets', ticketsRouter);
+app.set('sequelize', sequelize);
+app.set('models', { Ticket, User });
+
+app.use('/auth', usersRouter);
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
+
+app.use('/tickets', authenticateToken, ticketsRouter);
 
 export { app, sequelize };
