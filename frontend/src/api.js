@@ -42,7 +42,6 @@ export async function processarPendentes() {
 }
 
 //login
-
 export async function realizarLogin(email,senha){
   const res = await fetch(`${AUTH_URL}/login`,{
     method: 'POST',
@@ -53,7 +52,6 @@ export async function realizarLogin(email,senha){
 }
 
 //cadastro
-
 export async function realizarCadastro(nome,email,senha,confirmarSenha){
   const res = await fetch(`${AUTH_URL}/cadastro`,{
     method: 'POST',
@@ -69,4 +67,5 @@ export async function removerTicket(id) {
   });
   return res.json();
 }
+
 

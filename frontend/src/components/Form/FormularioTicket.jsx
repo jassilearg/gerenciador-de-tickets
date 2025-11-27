@@ -1,0 +1,120 @@
+import { useState } from "react";
+import { criarTicket } from "../../api";
+
+import Styles from "./Form.module.css";
+
+import logo from "./../../img/logo.png";
+import Input from "./../Input/input";
+import Button from "./../Button/Button";
+
+export default function FormularioTicket( bool) {
+    const [titulo, setTitulo] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [tipoCliente, setTipoCliente] = useState("GRATUITO");
+    const [mensagem, setMensagem] = useState("");
+    const [visible, setVisible] = useState(false);
+
+    if (!bool) {
+        return null;
+    } else {
+        const style = document.getElementById("form_container").style;
+        style.display = "block";
+        bool = false;
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        if (!titulo || !descricao) {
+            setMensagem("Preencha todos os campos!");
+            return;
+        }
+
+        const novoTicket = await criarTicket(titulo, descricao, tipoCliente);
+        if (novoTicket.error) {
+            setMensagem("Erro ao criar ticket.");
+        } else {
+            setMensagem("✅ Ticket criado com sucesso!");
+            setTitulo("");
+            setDescricao("");
+            setTipoCliente("GRATUITO");
+            onTicketCriado();
+        }
+    }
+
+    return (
+        <div className={Styles.form_container} id={Styles.form_container}>
+            <div className={Styles.form_content}>
+                <div className={Styles.form_header}>
+                    <h2>Novo Ticket</h2>
+                </div>
+                <form className={Styles.form} onSubmit={handleSubmit}>
+                    <div>
+                        <label>Título:</label>
+                        <Input
+                            id="titulo"
+                            value={titulo}
+                            onChange={(e) => setTitulo(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label>Descrição:</label>
+                        <br />
+                        <textarea
+                            id="descricao"
+                            value={descricao}
+                            onChange={(e) => setDescricao(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label>Tipo de Cliente:</label>
+                        <br />
+                        <select
+                            id="tipo-cliente"
+                            value={tipoCliente}
+                            onChange={(e) => setTipoCliente(e.target.value)}
+                            style={{ width: "100%", marginBottom: "10px" }}
+                        >
+                            <option id="gratuito" value="GRATUITO">
+                                Gratuito
+                            </option>
+                            <option id="basico" value="BASICO">
+                                Básico
+                            </option>
+                            <option id="premium" value="PREMIUM">
+                                Premium
+                            </option>
+                        </select>
+                    </div>
+                    <div className={Styles.footer_buttons}>
+                        <Button
+                            id="botao-cancel"
+                            className={Styles.secondary}
+                            type="button"
+                            onClick={() => {
+                                style.display = "none";
+                            }}
+                        >
+                            Cancelar
+                        </Button>
+                        <Button
+                            id="botao-clear"
+                            className={Styles.secondary}
+                            type="button"
+                            onClick={() => {
+                                setTitulo("");
+                                setDescricao("");
+                                setTipoCliente("GRATUITO");
+                            }}
+                        >
+                            Limpar
+                        </Button>
+                        <Button id="botao-submit" type="submit">
+                            Adicionar
+                        </Button>
+                    </div>
+                </form>
+                {mensagem && <p>{mensagem}</p>}
+            </div>
+        </div>
+    );
+}

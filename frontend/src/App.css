@@ -1,38 +1,46 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
+:root {
+  --bg-color: #f9fff9;
+  --text-color: #000000;
+  --white: #ffffff;
+  --black: #000000;
+  --off-black: #515966;
+  --off-white: #a0a0a0;
+  --off-white-transparent: #a0a0a080;
+}
+
 body {
-  background-color: #f1f5f9;
-  color: #1e293b;
-  height: 100vh;
-}
-
-.app-container {
   display: flex;
-  min-height: 100vh;
-  background-color: #f1f5f9;
-  position: relative;
+  flex-direction: column;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  width: 100%;
 }
 
-.sidebar {
-  flex: 0 0 320px;
-  background: #fff;
-  border-right: 1px solid #e2e8f0;
-  padding: 24px;
+h2 {
+  font-size: 1.3rem;
+  color: var(--text-color);
 }
 
-.tickets-section {
-  flex: 1;
-  padding: 24px;
+p {
+  font-size: 0.9rem;
+  color: var(--text-color);
 }
 
-.tickets-section h2 {
-  margin-bottom: 16px;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #0f172a;
+label {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
 }

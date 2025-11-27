@@ -1,0 +1,18 @@
+button {
+  font-size: 0.9rem;
+  color: var(--white);
+  background-color: var(--black);
+  padding: 6px 10px;
+
+  width: 100%;
+  max-width: 450px;
+  min-width: fit-content;
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--off-black);
+}
