@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./Button.module.css";
+import ButtonStyles from "./Button.module.css";
 
 export default function Botao({
   color,
@@ -12,9 +12,9 @@ export default function Botao({
   let className = "";
 
   if (color === "primary") {
-    className = Styles.primary;
+    className = ButtonStyles.primary;
   } else if (color === "secondary") {
-    className = Styles.secondary;
+    className = ButtonStyles.secondary;
   }
 
   return (

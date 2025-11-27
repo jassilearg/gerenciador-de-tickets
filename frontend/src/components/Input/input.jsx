@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Input.module.css";
+import InputStyles from "./Input.module.css";
 
 export default function Input({
   id,
@@ -16,7 +16,7 @@ export default function Input({
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      className={styles.input}
+      className={InputStyles.input}
       {...props}
     />
   );
