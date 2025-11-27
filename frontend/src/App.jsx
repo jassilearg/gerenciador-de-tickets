@@ -17,7 +17,6 @@ function PrivateRoute({ children }) {
 }
 
 export default function App() {
-
     return (
         <Routes>
             <Route path="/" element={<Login />} />
@@ -28,7 +27,7 @@ export default function App() {
                 path="/dashboard"
                 element={
                     //<PrivateRoute>
-                        <Dashboard />
+                    <Dashboard />
                     //</PrivateRoute>
                 }
             />

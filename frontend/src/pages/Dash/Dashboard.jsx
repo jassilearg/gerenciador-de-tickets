@@ -32,10 +32,6 @@ export default function App() {
         await carregarListas();
     }
 
-    function handleAddTicket() {
-        return <FormularioTicket visible={true} />;
-    }
-
     useEffect(() => {
         carregarListas();
     }, []);
@@ -54,9 +50,6 @@ export default function App() {
                     <Button
                         id="novo_ticket"
                         type="button"
-                        onClick={() => {
-                            handleAddTicket();
-                        }}
                     >
                         Novo Ticket
                     </Button>

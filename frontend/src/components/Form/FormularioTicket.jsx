@@ -7,20 +7,11 @@ import logo from "./../../img/logo.png";
 import Input from "./../Input/input";
 import Button from "./../Button/Button";
 
-export default function FormularioTicket( bool) {
+export default function FormularioTicket() {
     const [titulo, setTitulo] = useState("");
     const [descricao, setDescricao] = useState("");
     const [tipoCliente, setTipoCliente] = useState("GRATUITO");
     const [mensagem, setMensagem] = useState("");
-    const [visible, setVisible] = useState(false);
-
-    if (!bool) {
-        return null;
-    } else {
-        const style = document.getElementById("form_container").style;
-        style.display = "block";
-        bool = false;
-    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -90,23 +81,8 @@ export default function FormularioTicket( bool) {
                             id="botao-cancel"
                             className={Styles.secondary}
                             type="button"
-                            onClick={() => {
-                                style.display = "none";
-                            }}
                         >
                             Cancelar
-                        </Button>
-                        <Button
-                            id="botao-clear"
-                            className={Styles.secondary}
-                            type="button"
-                            onClick={() => {
-                                setTitulo("");
-                                setDescricao("");
-                                setTipoCliente("GRATUITO");
-                            }}
-                        >
-                            Limpar
                         </Button>
                         <Button id="botao-submit" type="submit">
                             Adicionar
