@@ -62,3 +62,11 @@ export async function realizarCadastro(nome,email,senha,confirmarSenha){
   });
   return res;
 }
+
+export async function removerTicket(id) {
+  const res = await fetch(`${API_URL}/${id}/deletar`, {
+    method: 'PUT'
+  });
+  return res.json();
+}
+

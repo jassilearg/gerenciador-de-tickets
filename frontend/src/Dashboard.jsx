@@ -4,13 +4,11 @@ import FormularioTicket from './components/Dashboard/FormularioTicket';
 import ListaTickets from './components/Dashboard/ListaTickets';
 import BotaoProcessar from './components/Dashboard/BotaoProcessar';
 import Login from './pages/Login';
-import { listarPendentes, listarClassificados } from './api';
-
+import { listarPendentes, listarClassificados, removerTicket } from './api';
 
 export default function App() {
   const [pendentes, setPendentes] = useState([]);
   const [classificados, setClassificados] = useState([]);
-  
 
   async function carregarListas() {
     const [p, c] = await Promise.all([
@@ -19,6 +17,11 @@ export default function App() {
     ]);
     setPendentes(p);
     setClassificados(c);
+  }
+
+  async function handleRemover(id) {
+    await removerTicket(id);
+    await carregarListas(); // 👈 ATUALIZA A UI
   }
 
   useEffect(() => {
@@ -31,8 +34,19 @@ export default function App() {
       <div style={{ flex: '0 0 320px' }}>
         <FormularioTicket onTicketCriado={carregarListas} />
       </div>
-      <ListaTickets titulo="Fila Pendente" tickets={pendentes} />
-      <ListaTickets titulo="Fila Classificada" tickets={classificados} />
+
+      <ListaTickets
+      titulo="Fila Pendente"
+      tickets={pendentes}
+      onRemover={handleRemover}
+      />
+
+
+      <ListaTickets
+        titulo="Fila Classificada"
+        tickets={classificados}
+        onRemover={handleRemover}
+      />
     </div>
   );
 }
