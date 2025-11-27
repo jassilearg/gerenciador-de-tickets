@@ -68,7 +68,7 @@ export default function FormularioLogin({ onLogin }) {
                             onChange={(e) => setSenha(e.target.value)}
                         />
                     </div>
-                    <Button type="submit" isLoading={isLoading}>
+                    <Button type="submit" color="primary" isLoading={isLoading}>
                         Entrar
                     </Button>
                 </form>

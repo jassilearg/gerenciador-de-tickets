@@ -102,6 +102,7 @@ export default function FormularioCadastro({ onCadastro }) {
                         />
                     </div>
                     <Button
+                        color="primary"
                         id="botao-submit"
                         type="submit"
                         disabled={isLoading}

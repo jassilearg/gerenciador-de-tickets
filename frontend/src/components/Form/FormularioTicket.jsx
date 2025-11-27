@@ -79,12 +79,12 @@ export default function FormularioTicket() {
                     <div className={Styles.footer_buttons}>
                         <Button
                             id="botao-cancel"
-                            className={Styles.secondary}
+                            color="secondary"
                             type="button"
                         >
                             Cancelar
                         </Button>
-                        <Button id="botao-submit" type="submit">
+                        <Button id="botao-submit" color="primary"    type="submit">
                             Adicionar
                         </Button>
                     </div>

@@ -1,7 +1,5 @@
 button {
   font-size: 0.9rem;
-  color: var(--white);
-  background-color: var(--black);
   padding: 6px 10px;
 
   width: 100%;
@@ -13,6 +11,21 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.primary {
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.primary:hover {
   background-color: var(--off-black);
+}
+
+.secondary {
+  border: 1px solid var(--off-white);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.secondary:hover {
+  background-color: var(--off-white-transparent);
 }

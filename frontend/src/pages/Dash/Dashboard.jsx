@@ -48,13 +48,14 @@ export default function App() {
                 </div>
                 <div className={Styles.header_buttons}>
                     <Button
+                        color="primary"
                         id="novo_ticket"
                         type="button"
                     >
                         Novo Ticket
                     </Button>
                     <Button
-                        className={Styles.secondary}
+                        color="secondary"
                         id="logout"
                         type="button"
                     >
