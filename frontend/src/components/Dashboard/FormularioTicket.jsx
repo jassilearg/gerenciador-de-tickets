@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { criarTicket } from '../api';
+import { criarTicket } from '../../api';
 import './FormularioTicket.module.css'
 
 export default function FormularioTicket({ onTicketCriado }) {
