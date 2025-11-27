@@ -72,4 +72,25 @@ router.put('/processar', async (req, res) => {
   }
 });
 
+router.put('/:id/deletar', async (req, res) => {
+  const { id } = req.params;
+  const Ticket = req.app.get('models').Ticket;
+
+  try {
+    const ticket = await Ticket.findByPk(id);
+
+    if (!ticket) {
+      return res.status(404).json({ error: 'Ticket não encontrado' });
+    }
+
+    ticket.status = 'DELETADO';
+    await ticket.save();
+
+    return res.status(200).json({ message: 'Ticket marcado como deletado', id });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Erro ao marcar ticket como deletado' });
+  }
+});
+
 export default router;
