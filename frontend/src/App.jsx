@@ -1,10 +1,15 @@
 import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+
+// Pages
 import Login from "./pages/Forms/Login";
 import Dashboard from "./pages/Dash/Dashboard";
 import Cadastro from "./pages/Forms/Cadastro";
+
+// Styles
 import "./App.css";
 
+// Login checking component
 function PrivateRoute({ children }) {
     const navigate = useNavigate();
 

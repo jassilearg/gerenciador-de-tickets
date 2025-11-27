@@ -1,3 +1,5 @@
+/* Global configs */
+
 * {
   margin: 0;
   padding: 0;
@@ -24,9 +26,15 @@ body {
   width: 100%;
 }
 
+/* Text configs */
 h2 {
   font-size: 1.3rem;
   color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 p {
@@ -38,9 +46,4 @@ label {
   font-size: 0.9rem;
   color: var(--text-color);
   font-weight: bold;
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
 }
