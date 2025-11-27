@@ -1,10 +1,9 @@
+import { listarPendentes, listarClassificados, removerTicket } from './api';
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import FormularioTicket from './components/FormularioTicket';
 import ListaTickets from './components/ListaTickets';
 import BotaoProcessar from './components/BotaoProcessar';
-import { listarPendentes, listarClassificados } from './api';
-
 
 export default function App() {
   const [pendentes, setPendentes] = useState([]);
@@ -19,6 +18,11 @@ export default function App() {
     setClassificados(c);
   }
 
+  async function handleRemover(id) {
+    await removerTicket(id);
+    await carregarListas(); // 👈 ATUALIZA A UI
+  }
+
   useEffect(() => {
     carregarListas();
   }, []);
@@ -29,8 +33,19 @@ export default function App() {
       <div style={{ flex: '0 0 320px' }}>
         <FormularioTicket onTicketCriado={carregarListas} />
       </div>
-      <ListaTickets titulo="Fila Pendente" tickets={pendentes} />
-      <ListaTickets titulo="Fila Classificada" tickets={classificados} />
+
+      <ListaTickets
+      titulo="Fila Pendente"
+      tickets={pendentes}
+      onRemover={handleRemover}
+      />
+
+
+      <ListaTickets
+        titulo="Fila Classificada"
+        tickets={classificados}
+        onRemover={handleRemover}
+      />
     </div>
   );
 }

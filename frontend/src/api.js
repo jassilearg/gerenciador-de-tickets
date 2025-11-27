@@ -23,3 +23,11 @@ export async function processarPendentes() {
   const res = await fetch(`${API_URL}/processar`, { method: 'PUT' });
   return res.json();
 }
+
+export async function removerTicket(id) {
+  const res = await fetch(`${API_URL}/${id}/deletar`, {
+    method: 'PUT'
+  });
+  return res.json();
+}
+

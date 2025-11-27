@@ -28,7 +28,7 @@ export default function TicketModel(sequelize) {
       allowNull: false,
       defaultValue: 'PENDENTE',
       validate: {
-        isIn: [['PENDENTE', 'CLASSIFICADO']]
+        isIn: [['PENDENTE', 'CLASSIFICADO', 'DELETADO']]
       }
     },
     urgencia_calculada: {
