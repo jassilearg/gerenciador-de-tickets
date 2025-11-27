@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { realizarCadastro } from "../../api";
 
-import Styles from "./Form.module.css";
-
+// Components
 import logo from "./../../img/logo.png";
 import Input from "./../Input/input";
 import Button from "./../Button/Button";
+
+// Styles
+import FormCadastroStyles from "./Form.module.css";
 
 export default function FormularioCadastro({ onCadastro }) {
     const [nome, setNome] = useState("");
@@ -54,14 +56,14 @@ export default function FormularioCadastro({ onCadastro }) {
     }
 
     return (
-        <div className={Styles.form_container}>
-            <div className={Styles.form_content}>
-                <div className={Styles.form_header}>
+        <div className={FormCadastroStyles.form_container}>
+            <div className={FormCadastroStyles.form_content}>
+                <div className={FormCadastroStyles.form_header}>
                     <img src={logo} alt="" />
                     <h2>Sistema de Tickets</h2>
                     <p>Registre suas credenciais para acessar o sistema</p>
                 </div>
-                <form className={Styles.form} onSubmit={handleSubmit}>
+                <form className={FormCadastroStyles.form} onSubmit={handleSubmit}>
                     <div>
                         <label>Nome:</label>
                         <Input

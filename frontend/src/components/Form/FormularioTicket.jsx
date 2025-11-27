@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { criarTicket } from "../../api";
 
-import Styles from "./Form.module.css";
-
-import logo from "./../../img/logo.png";
+// Components
 import Input from "./../Input/input";
 import Button from "./../Button/Button";
+
+// Styles
+import Styles from "./Form.module.css";
 
 export default function FormularioTicket() {
     const [titulo, setTitulo] = useState("");

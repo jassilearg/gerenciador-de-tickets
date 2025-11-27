@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { realizarLogin } from "../../api.js";
 
-import Styles from "./Form.module.css";
-
+// Components
 import logo from "./../../img/logo.png";
 import Input from "../Input/input.jsx";
 import Button from "../Button/Button.jsx";
+
+// Styles
+import FormLoginStyles from "./Form.module.css";
 
 export default function FormularioLogin({ onLogin }) {
     const [email, setEmail] = useState("");
@@ -40,14 +42,14 @@ export default function FormularioLogin({ onLogin }) {
     }
 
     return (
-        <div className={Styles.form_container}>
-            <div className={Styles.form_content}>
-                <div className={Styles.form_header}>
+        <div className={FormLoginStyles.form_container}>
+            <div className={FormLoginStyles.form_content}>
+                <div className={FormLoginStyles.form_header}>
                     <img src={logo} alt="" />
                     <h2>Sistema de Tickets</h2>
                     <p>Entre com suas credenciais para acessar o sistema</p>
                 </div>
-                <form className={Styles.form} onSubmit={handleSubmit}>
+                <form className={FormLoginStyles.form} onSubmit={handleSubmit}>
                     <div>
                         <label>E-mail:</label>
                         <Input
