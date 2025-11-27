@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Components
 import FormularioCadastro from "../../components/Form/FormularioCadastro.jsx";
-import Styles from "./FormPage.module.css";
+
+// Styles
+import CadastroPageStyle from "./FormPage.module.css";
 
 export default function Cadastro() {
     const navigate = useNavigate();
@@ -17,7 +20,7 @@ export default function Cadastro() {
     }
 
     return (
-        <div className={Styles.main}>
+        <div className={CadastroPageStyle.main}>
             <FormularioCadastro onCadastro={handleCadastro} />
             <p>
                 Já possui conta ? <a onClick={irParaLogin}>Login</a>

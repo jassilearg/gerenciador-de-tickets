@@ -1,8 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+// Components
 import FormularioLogin from "../../components/Form/FormularioLogin.jsx";
-import Styles from "./FormPage.module.css";
+
+// Styles
+import LoginPageStyle from "./FormPage.module.css";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -16,7 +19,7 @@ export default function Login() {
     }
 
     return (
-        <div className={`${Styles.main} ${Styles.login}`}>
+        <div className={`${LoginPageStyle.main} ${LoginPageStyle.login}`}>
             <FormularioLogin onLogin={handleLogin} />
             <p>
                 Ainda não tem conta ?{" "}
