@@ -8,12 +8,12 @@ import Button from "./../Button/Button";
 // Styles
 import Styles from "./Form.module.css";
 
-export default function FormularioTicket() {
+export default function FormularioTicket({onCancel, onSuccess}) {
     const [titulo, setTitulo] = useState("");
     const [descricao, setDescricao] = useState("");
     const [tipoCliente, setTipoCliente] = useState("GRATUITO");
     const [mensagem, setMensagem] = useState("");
-
+   
     async function handleSubmit(e) {
         e.preventDefault();
         if (!titulo || !descricao) {
@@ -31,6 +31,8 @@ export default function FormularioTicket() {
             setTipoCliente("GRATUITO");
             onTicketCriado();
         }
+
+        onSuccess();
     }
 
     return (
@@ -82,6 +84,7 @@ export default function FormularioTicket() {
                             id="botao-cancel"
                             color="secondary"
                             type="button"
+                            onClick={onCancel}
                         >
                             Cancelar
                         </Button>

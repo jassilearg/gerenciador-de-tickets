@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 import FormularioTicket from "../../components/Form/FormularioTicket";
 import ListaTickets from "../../components/Dashboard/ListaTickets";
 import BotaoProcessar from "../../components/Dashboard/BotaoProcessar";
@@ -17,7 +18,8 @@ import Styles from "./Dashboard.module.css";
 export default function App() {
     const [pendentes, setPendentes] = useState([]);
     const [classificados, setClassificados] = useState([]);
-
+    const [showForm, setShowForm] = useState(false);
+    
     async function carregarListas() {
         const [p, c] = await Promise.all([
             listarPendentes(),
@@ -27,6 +29,8 @@ export default function App() {
         setClassificados(c);
     }
 
+
+
     async function handleRemover(id) {
         await removerTicket(id);
         await carregarListas();
@@ -35,6 +39,10 @@ export default function App() {
     useEffect(() => {
         carregarListas();
     }, []);
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+    }
 
     return (
         <div className={Styles.main}>
@@ -51,9 +59,11 @@ export default function App() {
                         color="primary"
                         id="novo_ticket"
                         type="button"
+                        onClick={() => {console.log(showForm); setShowForm(true)}}
                     >
                         Novo Ticket
                     </Button>
+                    {showForm && <FormularioTicket onCancel={handleCloseForm} onSuccess={handleCloseForm} />}
                     <Button
                         color="secondary"
                         id="logout"
@@ -63,7 +73,6 @@ export default function App() {
                     </Button>
                 </div>
             </div>
-            <FormularioTicket />
         </div>
     );
 }
