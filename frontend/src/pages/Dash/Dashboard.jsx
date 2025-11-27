@@ -44,6 +44,12 @@ export default function App() {
         setShowForm(false);
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.href = '/'
+    }
+
     return (
         <div className={Styles.main}>
             <div className={Styles.header}>
@@ -68,6 +74,7 @@ export default function App() {
                         color="secondary"
                         id="logout"
                         type="button"
+                        onClick={handleLogout}
                     >
                         Sair
                     </Button>
