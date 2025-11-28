@@ -1,7 +1,6 @@
 .main {
     display: flex;
     flex-direction: column;
-
     padding: 20px;
 
     & .header {
@@ -27,6 +26,127 @@
         & img {
             height: 50px;
             width: 50px;
+        }
+    }
+
+    & .search_container {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-start; 
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    & .search_bar {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        gap: 10px;
+    }
+
+    & .search_bar input {
+        flex: 1;
+        height: 40px; 
+        padding: 0 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        font-size: 14px;
+        background-color: #f1f1f1;
+    }
+
+    & .search_button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .search_button button {
+        height: 40px; 
+        padding: 0 15px;
+        border: none;
+        border-radius: 6px;
+        background-color: gray;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    & .search_button button:hover {
+        background-color: gray;
+    }
+
+    & .text_container p {
+        margin-top: 25px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    & .description p {
+        margin-top: 8px;
+        font-size: 16px;
+        color: gray;
+    }
+
+    & .hr_style {
+        margin-top: 15px;
+    }
+
+    & .dashboard_container {
+        margin-top: 20px;
+        width: 100%;
+        overflow-x: auto;
+
+        & .ticket_table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        & .ticket_table th,
+        & .ticket_table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        & .ticket_table thead {
+            background-color: #f5f5f5;
+        }
+
+        & .ticket_table tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+
+        & .ticket_table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        & .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #fff;
+            text-transform: capitalize;
+        }
+
+        & .status_pendente {
+            background-color: #f0ad4e;
+        }
+
+        & .status_classificado {
+            background-color: #5cb85c;
+        }
+
+        & .status_fechado {
+            background-color: #d9534f;
         }
     }
 }
