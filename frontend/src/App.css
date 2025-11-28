@@ -12,9 +12,12 @@
   --text-color: #000000;
   --white: #ffffff;
   --black: #000000;
+  --red: #ff0000;
   --off-black: #515966;
   --off-white: #a0a0a0;
   --off-white-transparent: #a0a0a080;
+
+  --off-white-400: #d3d3d366;
 }
 
 body {

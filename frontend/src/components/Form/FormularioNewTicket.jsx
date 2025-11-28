@@ -1,84 +1,52 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { criarTicket } from "../../api";
 
 // Components
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
-// API
-import { atualizarTicket } from "../../api";
-
 // Styles
 import Styles from "./Form.module.css";
 
-export default function FormularioTicket({ ticket, onCancel, onSuccess }) {
+export default function FormularioTicket({ onCancel, onSuccess }) {
     const [titulo, setTitulo] = useState("");
     const [descricao, setDescricao] = useState("");
     const [tipoCategoria, setTipoCategoria] = useState("Suporte");
     const [prioridade, setPrioridade] = useState("Baixa");
     const [mensagem, setMensagem] = useState("");
 
-    // Preencher os campos se houver ticket selecionado
-    useEffect(() => {
-        if (ticket) {
-            setTitulo(ticket.titulo || "");
-            setDescricao(ticket.descricao || "");
-            setTipoCategoria(ticket.tipo_categoria || "Suporte");
-            setPrioridade(ticket.prioridade || "Baixa");
-        } else {
-            setTitulo("");
-            setDescricao("");
-            setTipoCategoria("Suporte");
-            setPrioridade("Baixa");
-        }
-    }, [ticket]);
-
     async function handleSubmit(e) {
         e.preventDefault();
-
         if (!titulo || !descricao) {
             setMensagem("Preencha todos os campos!");
             return;
         }
 
-        let ticketAtualizado;
+        const novoTicket = await criarTicket(
+            titulo,
+            descricao,
+            tipoCategoria,
+            prioridade
+        );
 
-        try {
-            if (ticket) {
-                // Atualizar ticket existente
-                ticketAtualizado = await atualizarTicket(ticket.id, {
-                    titulo,
-                    descricao,
-                    tipo_categoria: tipoCategoria,
-                    prioridade,
-                });
-            } else {
-                // Criar novo ticket
-                ticketAtualizado = await criarTicket(
-                    titulo,
-                    descricao,
-                    tipoCategoria,
-                    prioridade
-                );
-            }
-
-            if (ticketAtualizado.error) {
-                setMensagem("Erro ao salvar ticket.");
-            } else {
-                setMensagem("✅ Ticket salvo com sucesso!");
-                onSuccess(ticketAtualizado); // Atualiza a lista no dashboard
-            }
-        } catch (err) {
-            console.error(err);
-            setMensagem("Erro ao salvar ticket.");
+        if (novoTicket.error) {
+            setMensagem("Erro ao criar ticket.");
+        } else {
+            setMensagem("✅ Ticket criado com sucesso!");
+            setTitulo("");
+            setDescricao("");
+            setTipoCategoria("Suporte");
+            setPrioridade("Baixa");
         }
+
+        onSuccess(novoTicket);
     }
 
     return (
-        <div className={Styles.form_container}>
+        <div className={Styles.form_container} id={Styles.form_container}>
             <div className={Styles.form_content}>
                 <div className={Styles.form_header}>
-                    <h2>{ticket ? "Editar Ticket" : "Novo Ticket"}</h2>
+                    <h2>Novo Ticket</h2>
                 </div>
 
                 <form className={Styles.form} onSubmit={handleSubmit}>
@@ -130,6 +98,7 @@ export default function FormularioTicket({ ticket, onCancel, onSuccess }) {
 
                     <div className={Styles.footer_buttons}>
                         <Button
+                            id="botao-cancel"
                             color="secondary"
                             type="button"
                             onClick={onCancel}
@@ -137,8 +106,8 @@ export default function FormularioTicket({ ticket, onCancel, onSuccess }) {
                             Cancelar
                         </Button>
 
-                        <Button color="primary" type="submit">
-                            {ticket ? "Atualizar" : "Adicionar"}
+                        <Button id="botao-submit" color="primary" type="submit">
+                            Adicionar
                         </Button>
                     </div>
                 </form>

@@ -1,7 +1,7 @@
 .main {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 15px 20px;
 
     & .header {
         display: flex;
@@ -9,12 +9,23 @@
         align-items: center;
         justify-content: space-between;
         gap: 20px;
+        padding-bottom: 15px;
+        box-shadow: 0px 1px 0px var(--off-white-400);
+
+        & img {
+            width: 50px;
+            height: 50px;
+        }
 
         & .header_logo {
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 20px;
+
+            & p {
+                color: var(--off-white);
+            }
         }
 
         & .header_buttons {
@@ -22,131 +33,109 @@
             flex-direction: row;
             gap: 10px;
         }
+    }
 
-        & img {
-            height: 50px;
-            width: 50px;
+    & .tickets_info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 0;
+
+        & p {
+            color: var(--off-white);
         }
     }
 
     & .search_container {
         display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: flex-start; 
         flex-direction: row;
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    & .search_bar {
-        display: flex;
-        flex: 1;
         align-items: center;
         gap: 10px;
-    }
 
-    & .search_bar input {
-        flex: 1;
-        height: 40px; 
-        padding: 0 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        outline: none;
-        font-size: 14px;
-        background-color: #f1f1f1;
-    }
+        & .search_bar {
+            flex: 3;
+        }
 
-    & .search_button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    & .search_button button {
-        height: 40px; 
-        padding: 0 15px;
-        border: none;
-        border-radius: 6px;
-        background-color: gray;
-        color: #fff;
-        font-size: 14px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-
-    & .search_button button:hover {
-        background-color: gray;
-    }
-
-    & .text_container p {
-        margin-top: 25px;
-        font-size: 20px;
-        font-weight: 500;
-    }
-
-    & .description p {
-        margin-top: 8px;
-        font-size: 16px;
-        color: gray;
-    }
-
-    & .hr_style {
-        margin-top: 15px;
+        & .search_buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            flex: 1;
+        }
     }
 
     & .dashboard_container {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        height: 60dvh;
         margin-top: 20px;
-        width: 100%;
-        overflow-x: auto;
+        font-size: 0.9rem;
+        border: 1px solid var(--off-white-400);
 
         & .ticket_table {
             width: 100%;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        & .ticket_table th,
-        & .ticket_table td {
-            padding: 12px 15px;
             text-align: left;
-        }
+            border: none;
+            border-radius: 12px;
+            border-collapse: collapse;
 
-        & .ticket_table thead {
-            background-color: #f5f5f5;
-        }
+            & thead {
+                font-weight: 600;
+                color: var(--text-color);
 
-        & .ticket_table tbody tr {
-            border-bottom: 1px solid #eee;
-            transition: background-color 0.2s;
-        }
+                & th {
+                    padding: 10px;
+                    border-bottom: 1px solid var(--off-white-400);
+                }
 
-        & .ticket_table tbody tr:hover {
-            background-color: #f9f9f9;
-        }
+                & .col_titulo {
+                    width: 300px;
+                    max-width: 400px;
+                }
+            }
 
-        & .badge {
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #fff;
-            text-transform: capitalize;
-        }
+            & tbody {
+                & .badge {
+                    padding: 5px 10px;
+                    border-radius: 12px;
+                    font-weight: 600;
+                    font-size: 0.8rem;
+                }
 
-        & .status_pendente {
-            background-color: #f0ad4e;
-        }
+                & .prioridade_baixa {
+                    background-color: var(--white);
+                    border: 1px solid var(--off-white-transparent);
+                }
 
-        & .status_classificado {
-            background-color: #5cb85c;
-        }
+                & .prioridade_media {
+                    background-color: var(--off-white-transparent);
+                    color: var(--black);
+                }
 
-        & .status_fechado {
-            background-color: #d9534f;
+                & .prioridade_alta {
+                    background-color: var(--black);
+                    color: var(--white);
+                }
+
+                & .prioridade_critica {
+                    background-color: var(--red);
+                    color: var(--white);
+                }
+
+                & tr {
+                    border-bottom: 1px solid var(--off-white-400);
+                }
+
+                & td {
+                    padding: 10px;
+
+                    & svg {
+                        width: 16px;
+                        height: 16px;
+                    }
+                }
+            }
         }
     }
 }
