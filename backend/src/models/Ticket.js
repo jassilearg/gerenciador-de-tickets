@@ -3,8 +3,8 @@ import { DataTypes } from 'sequelize';
 export default function TicketModel(sequelize) {
   return sequelize.define('Ticket', {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true
     },
     titulo: {
@@ -15,30 +15,29 @@ export default function TicketModel(sequelize) {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    tipo_cliente: {
+    tipo_categoria: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 'GRATUITO',
       validate: {
-        isIn: [['GRATUITO', 'BASICO', 'PREMIUM']]
+        isIn: [['Vendas', 'Financeiro', 'Tecnico', 'Suporte']]
       }
     },
     status: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 'PENDENTE',
+      defaultValue: 'Pendente',
       validate: {
-        isIn: [['PENDENTE', 'CLASSIFICADO', 'DELETADO']]
+        isIn: [['Pendente', 'Classificado', 'Deletado']]
       }
     },
-    urgencia_calculada: {
+    prioridade: {
       type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: null,
+      allowNull: false,
+      defaultValue: 'Baixa',
       validate: {
-        isIn: [['BAIXA', 'MEDIA', 'ALTA', 'CRITICA', null]]
+        isIn: [['Baixa', 'Media', 'Alta', 'Critica']]
       }
-    }
+    },
   }, {
     tableName: 'tickets',
     timestamps: true
